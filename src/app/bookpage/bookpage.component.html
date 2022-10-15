@@ -1,0 +1,47 @@
+<div class="wrapper">
+	<div class="main_card">
+		<div class="card_left">
+			<div class="card_datails">
+				<h1>{{moviesData.movie_name}}</h1>
+				<div class="card_cat">
+					<p class="PG">{{moviesData.guide}}</p>
+					<p class="year">{{moviesData.year}}</p>
+					<p class="genre">{{moviesData.Genre}}</p>
+					<p class="time">{{moviesData.time}}</p>
+				</div>
+				<p class="disc">{{moviesData.desc}}</p>
+				<a href="{{moviesData.imdb}}" target="_blank">Read More</a>
+			<div class="social-btn">
+        <!-- WATCH TRAILER-->
+		<a href="{{moviesData.link}}">
+			<button>
+				<i class="fas fa-play" ></i> SEE TRAILER
+			</button>
+		</a>
+				<!-- GET-->
+				<button>
+					<i class="fas fa-download"></i> BOOK
+				</button>
+				<!--USERS RATINGS-->
+				<button>
+					<i class="fas fa-thumbs-up"></i> {{moviesData.percentage}}
+				</button>
+				<!--BOOKMARK-->
+				<button>
+					<i class="fas fa-star"></i>
+				</button>
+			</div>	
+			</div>
+		</div>
+		<div class="card_right">
+			<div class="img_container">
+				<img src="{{moviesData.image}}" alt="">
+				</div>
+				<div class="play_btn">
+					<a href="https://www.imdb.com/title/tt4912910/" target="_blank">
+						<i class="fas fa-play-circle"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>

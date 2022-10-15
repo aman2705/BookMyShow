@@ -1,0 +1,55 @@
+
+
+
+<ng-container class="aman" *ngFor="let item of users">
+<div class="wrapper">
+    <div class="main_card">
+        <div class="card_left">
+            <div class="card_datails">
+                <h1>{{item.movie_name}}</h1>
+                <div class="card_cat">
+                    <p class="PG">{{item.guide}}</p>
+                    <p class="year">{{item.year}}</p>
+                    <p class="genre">{{item.Genre}} </p>
+                    <p class="time">{{item.time}}</p>
+                </div>
+                <p class="disc">{{item.desc}}</p>
+                <a href="{{item.imdb}}" target="_blank">Read More</a>
+                <div class="social-btn">
+                    <!-- WATCH TRAILER-->
+                   
+                    <a href="{{item.link}}">
+                        <button>
+                            <i class="fas fa-play" ></i> SEE TRAILER
+                        </button>
+                    </a>
+                       
+                   
+                    <!-- GET-->
+                    <button (click)="clicked(item)">
+                        <i class="fas fa-download"></i> BOOK TICKETS
+                    </button>
+                    <!--USERS RATINGS-->
+                    <button>
+                        <i class="fas fa-thumbs-up"></i> {{item.percentage}}
+                    </button>
+                    <!--BOOKMARK-->
+                    <button>
+                        <i class="fas fa-star"></i>{{item.tickets+" tickets"}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card_right">
+            <div class="img_container">
+                <img src="{{item.image}}" alt="">
+            </div>
+            <div class="play_btn">
+                <a href="https://www.imdb.com/title/tt4912910/" target="_blank">
+
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-container>
