@@ -1,47 +1,45 @@
 <div class="wrapper">
-	<div class="main_card">
-		<div class="card_left">
-			<div class="card_datails">
-				<h1>{{moviesData.movie_name}}</h1>
-				<div class="card_cat">
-					<p class="PG">{{moviesData.guide}}</p>
-					<p class="year">{{moviesData.year}}</p>
-					<p class="genre">{{moviesData.Genre}}</p>
-					<p class="time">{{moviesData.time}}</p>
+	<div class="main_card movie-card">
+		<div class="content-wrapper">
+			<img src="{{moviesData?.image}}" alt="" class="movie-card-img">
+			<div class="card-content">
+				<div>
+					<div class="movie-name h4">{{moviesData?.movie_name}}</div>
+					<div class="badges pt-2">
+						<span class="badge mx-1">{{moviesData?.guide}}</span>
+						<span class="badge mx-1">{{moviesData?.year}}</span>
+						<span class="badge mx-1">{{moviesData?.Genre}}</span>
+						<span class="badge mx-1">{{moviesData?.time}}</span>
+						<span class="badge mx-1">{{moviesData?.percentage}}</span>
+					</div>
+					<div class="movie-sum card-sum text-muted">{{moviesData?.desc}}
+						<a href="{{moviesData?.imdb}}" target="_blank">Read More</a>
+					</div>
 				</div>
-				<p class="disc">{{moviesData.desc}}</p>
-				<a href="{{moviesData.imdb}}" target="_blank">Read More</a>
-			<div class="social-btn">
-        <!-- WATCH TRAILER-->
-		<a href="{{moviesData.link}}">
-			<button>
-				<i class="fas fa-play" ></i> SEE TRAILER
-			</button>
-		</a>
-				<!-- GET-->
-				<button>
-					<i class="fas fa-download"></i> BOOK
-				</button>
-				<!--USERS RATINGS-->
-				<button>
-					<i class="fas fa-thumbs-up"></i> {{moviesData.percentage}}
-				</button>
-				<!--BOOKMARK-->
-				<button>
-					<i class="fas fa-star"></i>
-				</button>
-			</div>	
+
+				<div>
+					<button mat-stroked-button (click)="seeTrailer(moviesData)">See Trailer</button>
+					<button mat-raised-button color="primary" style="width: 50%;margin-left: 10px;"
+						(click)="clicked(moviesData)">Book
+						Tickets</button>
+					<div class="pt-1 small text-muted">Available Tickets : {{moviesData?.tickets}}</div>
+				</div>
 			</div>
 		</div>
-		<div class="card_right">
-			<div class="img_container">
-				<img src="{{moviesData.image}}" alt="">
-				</div>
-				<div class="play_btn">
-					<a href="https://www.imdb.com/title/tt4912910/" target="_blank">
-						<i class="fas fa-play-circle"></i>
-					</a>
-				</div>
+		<div class="likes">
+			<div class="like-profile">
+				<img src="https://randomuser.me/api/portraits/women/63.jpg" alt="" class="like-img">
+			</div>
+			<div class="like-profile">
+				<img src="https://pbs.twimg.com/profile_images/2452384114/noplz47r59v1uxvyg8ku.png" alt=""
+					class="like-img">
+			</div>
+			<div class="like-profile">
+				<img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+					alt="" class="like-img">
+			</div>
+			<div class="like-name"><span>Samantha William</span> and<span> 2 other friends</span> like this
 			</div>
 		</div>
 	</div>
+</div>

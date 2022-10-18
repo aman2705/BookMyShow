@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { movies } from '../Utilities/movies';
-import { ApiConsumerService } from '../movies/movies.service'; 
+import { ApiConsumerService } from '../movies/movies.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -10,17 +10,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookpageComponent implements OnInit {
 
- moviesData: any;
-  constructor(private service: ApiConsumerService,private router:Router, private route : ActivatedRoute) { }
+  moviesData: any;
+  constructor(private service: ApiConsumerService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let movieID = this.route.snapshot.paramMap.get('id');
-    console.log(movieID);
-    const passMovieID : string = movieID !== null ? movieID : '';
-    this.service.getMovieDetails(parseInt(passMovieID)).subscribe(res => {this.moviesData = res});
+    const passMovieID: string = movieID !== null ? movieID : '';
+    // this.service.nextSpinnerState(true);
+    this.service.getMovieDetails(parseInt(passMovieID)).subscribe(res => {
+      this.moviesData = res;
+      // this.service.nextSpinnerState(false);
+    }, error => {
+      // this.service.nextSpinnerState(false);
+    });
   }
-  bookticket(movie:movies){
-    this.router.navigate(['bookingdone'])
+
+  clicked(movie: any) {
+    this.router.navigate(['bookingdone/' + movie.id]);
+  }
+
+  seeTrailer(elem: any) {
+    window.open(elem.link, "_blank");
   }
 
 }

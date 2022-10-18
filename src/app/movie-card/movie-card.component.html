@@ -1,25 +1,32 @@
-<div class="container">  
-  <form id="contact" action="" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
-    <h3>Film Form</h3>
-    <h4>{{serviceData.name}}</h4>
+<div class="container">
+  <!-- (ngSubmit)="submit(myForm)" -->
+  <form id="contact" [formGroup]="eventBookingForm" (ngSubmit)="submit()">
+    <h3>{{moviesData?.movie_name}}</h3>
+    <h4>Tickets Available : {{moviesData?.tickets}}</h4>
     <fieldset>
-      <input id="userName" placeholder="Your name" type="text" formControlName="userName" tabindex="1" required autofocus>
+      <input id="userName" placeholder="Your name" type="text" formControlName="name" required autofocus
+        [ngClass]="{ 'is-invalid': submitted && eventBookingForm.controls.name.errors }">
     </fieldset>
     <fieldset>
-      <input placeholder="email" type="text" formControlName="email" tabindex="4" required>
+      <input placeholder="email" type="text" formControlName="email" required
+        [ngClass]="{ 'is-invalid': submitted && eventBookingForm.controls.email.errors }">
     </fieldset>
     <fieldset>
-      <input id="Name" placeholder="Phone" formControlName="phone" type="text" tabindex="2" required>
+      <input id="Name" placeholder="Phone" formControlName="phone" type="number" required
+        [ngClass]="{ 'is-invalid': submitted && eventBookingForm.controls.phone.errors }">
     </fieldset>
     <fieldset>
-      <input placeholder="Number of tickets" formControlName="tickets" type="text" tabindex="4" required>
+      <input placeholder="Number of tickets" formControlName="numberOfTickets" type="number"
+        (change)="noOfTicketsChanged($event)" required
+        [ngClass]="{ 'is-invalid': submitted && eventBookingForm.controls.numberOfTickets.errors }">
     </fieldset>
     <fieldset>
-      <input formControlName="date" type="date" tabindex="4" required>
+      <input formControlName="date" type="date" required
+        [ngClass]="{ 'is-invalid': submitted && eventBookingForm.controls.date.errors }">
     </fieldset>
-    
+
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
     </fieldset>
-    </form>
+  </form>
 </div>

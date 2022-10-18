@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constant } from '../Utilities/constant';
-import { catchError, Observable, retry, throwError} from 'rxjs';
+import { BehaviorSubject, catchError, Observable, retry, throwError } from 'rxjs';
 import { movies } from '../Utilities/movies';
 
 @Injectable({
@@ -9,30 +9,36 @@ import { movies } from '../Utilities/movies';
 })
 export class ApiConsumerService {
   constructor(private httpClient: HttpClient) { }
-  getAllUserDetails(): Observable<any>{
-    return this.httpClient.get(Constant.getEndpoint.toString()).pipe(retry(1), catchError(this.handleError));
+
+  /* Movie APi */
+  getAllMovies(): Observable<any> {
+    return this.httpClient.get(`${Constant.getEndpoint.toString()}/movie_tickets`);
   }
 
-  getMovieDetails(id : number){
-    return this.httpClient.get(`${Constant.getEndpoint}/${id}`.toString()).pipe(retry(1),catchError(this.handleError));
+  getMovieDetails(id: number) {
+    return this.httpClient.get(`${Constant.getEndpoint}/movie_tickets/${id}`.toString());
   }
 
-  deleteUser(id: number){
-    return this.httpClient.delete(`${Constant.deleteEndpoint}/${id}`).pipe(retry(1),catchError(this.handleError))
+  putMovieDetails(id: number, data: any) {
+    return this.httpClient.put(`${Constant.getEndpoint}/movie_tickets/${id}`.toString(), data);
+  }
+  /* Booking API */
+  saveBooking(data: any) {
+    return this.httpClient.post(`${Constant.getEndpoint}/booking`.toString(), data);
   }
 
-  addNewUser(name: String, location:String):Observable<movies>{
-    const user = new movies()
-    user.Movie_name = name
-    // user.location = location
-    const header = new HttpHeaders()
-    header.set('Content-Type', 'application/json')
-    return this.httpClient.post<movies>(Constant.getEndpoint.toString(),user, {headers: header}).pipe(retry(1),catchError(this.handleError))
+  getAllBooking() {
+    return this.httpClient.get(`${Constant.getEndpoint}/booking`.toString());
   }
 
-  handleError(er:any){
-    return throwError(()=>{
-      console.log(er)
-    })
+  updateBooking(id:number, data: any) {
+    return this.httpClient.put(`${Constant.getEndpoint}/booking/${id}`.toString(), data);
   }
+
+  //
+  // public spinnerSub = new BehaviorSubject<boolean>(false);
+
+  // public nextSpinnerState(state: boolean){
+  //   this.spinnerSub.next(state);
+  // }
 }

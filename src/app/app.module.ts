@@ -8,7 +8,16 @@ import { MoviesComponent } from './movies/movies.component';
 import { BookpageComponent } from './bookpage/bookpage.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
 
 @NgModule({
   declarations: [
@@ -16,14 +25,23 @@ import { ReactiveFormsModule } from '@angular/forms';
     TodosComponent,
     MoviesComponent,
     WelcomeComponent,
-   
-    
+    MovieCardComponent,
+    BookingHistoryComponent,
+    BookpageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatButtonModule,
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

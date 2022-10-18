@@ -1,0 +1,20 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-container {
+  height: 80%;
+  width: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
